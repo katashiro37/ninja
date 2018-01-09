@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ContactManager</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+     <!-- navbar -->
+   <%= render 'layouts/navbar' %>
+
+    <!-- content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">All Contact <span class="badge">10</span></a>
+            <a href="" class="list-group-item">Family <span class="badge">4</span></a>
+            <a href="" class="list-group-item">Friends <span class="badge">3</span></a>
+            <a href="" class="list-group-item">Other <span class="badge">3</span></a>
+          </div>
+        </div><!-- /.col-md-3 -->
+
+        <div class="col-md-9">
+        	<%= yield %>
+         
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
