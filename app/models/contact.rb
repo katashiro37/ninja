@@ -1,7 +1,7 @@
 class Contact < ApplicationRecord
   belongs_to :group
 
-  paginates_per 10
+  paginates_per 5
 
   def gravatar
       # create the md5 hash
