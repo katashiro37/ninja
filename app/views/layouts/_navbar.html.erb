@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <!-- <a class="navbar-brand text-uppercase" href="#">            
+          <!-- <a class="navbar-brand text-uppercase" href="#">
             My contact
           </a> -->
           <%= link_to "My Contact", root_path, class: "navbar-brand text-uppercase" %>
@@ -16,10 +16,14 @@
         <!-- /.navbar-header -->
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <div class="nav navbar-right navbar-btn">
-            <a href="form.html" class="btn btn-default">
-              <i class="glyphicon glyphicon-plus"></i> 
+            <!-- <a href="form.html" class="btn btn-default">
+              <i class="glyphicon glyphicon-plus"></i>
               Add Contact
-            </a>
+            </a> -->
+            <%= link_to new_contact_path, class: "btn btn-default" do %>
+              <i class="glyphicon glyphicon-plus"></i>
+              Add Contact
+            <% end %>
           </div>
         </div>
       </div>
