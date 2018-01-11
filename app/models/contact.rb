@@ -1,6 +1,8 @@
 class Contact < ApplicationRecord
   belongs_to :group
 
+  paginates_per 10
+
   def gravatar
       # create the md5 hash
     hash = Digest::MD5.hexdigest(email.downcase)
