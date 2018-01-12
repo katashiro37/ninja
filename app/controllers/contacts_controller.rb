@@ -4,13 +4,14 @@ class ContactsController < ApplicationController
     	#@contacts = Contact.page.per(10) kaminari GEM
       if params[:group_id] && !params[:group_id].empty?
          #@contacts = Contact.where(group_id: params[:group_id]).page(params[:page]) #use where method for group_id param
-         @contacts = Group.find(params[:group_id]).contacts.page(params[:page]) # another way to get group_id
+         @contacts = Group.find(params[:group_id]).contacts.page(params[:page]).order(created_at: :desc) # another way to get group_id
       else
-    	   @contacts = Contact.page(params[:page]) #with default page set on kaminari Config
+    	   @contacts = Contact.page(params[:page]).order(created_at: :desc) #with default page set on kaminari Config
       end
     end
 
     def new
+      @contact = Contact.new
     end
 
     def create
@@ -21,6 +22,20 @@ class ContactsController < ApplicationController
         else
           render 'new'
         end
+    end
+
+    def edit
+      @contact = Contact.find(params[:id])
+    end
+
+    def update
+      @contact = Contact.find(params[:id])
+      if @contact.update(contact_params)
+         flash[:success] = "Contact was successfully updated."
+         redirect_to contacts_path
+      else
+         render 'edit'
+      end
     end
 
     private
