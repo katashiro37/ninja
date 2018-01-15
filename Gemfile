@@ -58,3 +58,5 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 gem 'paperclip', '~> 5.1'
+
+gem 'jasny-bootstrap-rails', '~> 3.1', '>= 3.1.3'
