@@ -4,7 +4,7 @@
 	    <div class="media-left">
 	      <a href="#">
 	        <!-- <img class="media-object" src="http://placehold.it/100x100" alt="..."> -->
-					<%= image_tag contact.gravatar, class: "media-object" %>
+					<%= image_tag contact.avatar.url(:thumb), class: "media-object", style: "width:100px; height: 100px;" %>
 	      </a>
 	    </div>
 	    <div class="media-body">
@@ -25,10 +25,13 @@
 			<%= link_to edit_contact_path(contact), class: "btn btn-circle btn-default btn-xs", title: "Edit" do %>
  				<i class="glyphicon glyphicon-edit"></i>
 			<% end %>
+			<%= link_to destroy_contact_path(contact), method: :delete, class: "btn btn-circle btn-danger btn-xs", title: "Delete" , data: {confirm: "Are you sure?"} do %>
+ 				<i class="glyphicon glyphicon-remove"></i>
+			<% end %>
 
-	    <a href="#" class="btn btn-circle btn-danger btn-xs" title="Edit">
+	    <!-- <a href="#" class="btn btn-circle btn-danger btn-xs" title="Edit">
 	      <i class="glyphicon glyphicon-remove"></i>
-	    </a>
+	    </a> -->
 	  </div>
 	</td>
 </tr>
