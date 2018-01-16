@@ -6,9 +6,14 @@ class ContactsController < ApplicationController
       session[:selected_group_id] = params[:group_id]
       if params[:group_id] && !params[:group_id].empty?
          #@contacts = Contact.where(group_id: params[:group_id]).page(params[:page]) #use where method for group_id param
-         @contacts = Group.find(params[:group_id]).contacts.page(params[:page]).order(created_at: :desc) # another way to get group_id
+         group = Group.find(params[:group_id])
+         if params[:term] && !params[:term].empty?
+           @contacts = group.contacts.where('name LIKE ?', "%#{params[:term]}%").page(params[:page]).order(created_at: :desc) # another way to get group_id
+         else
+           @contacts = group.contacts.page(params[:page]).order(created_at: :desc) # another way to get group_id
+         end
       else
-    	   @contacts = Contact.page(params[:page]).order(created_at: :desc) #with default page set on kaminari Config
+    	   @contacts = Contact.where('name LIKE ?', "%#{params[:term]}%").order(created_at: :desc).page(params[:page]) #with default page set on kaminari Config
       end
     end
 
