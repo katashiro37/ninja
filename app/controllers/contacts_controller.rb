@@ -3,6 +3,7 @@ class ContactsController < ApplicationController
     def index
     	#@contacts = Contact.all
     	#@contacts = Contact.page.per(10) kaminari GEM
+      session[:selected_group_id] = params[:group_id]
       if params[:group_id] && !params[:group_id].empty?
          #@contacts = Contact.where(group_id: params[:group_id]).page(params[:page]) #use where method for group_id param
          @contacts = Group.find(params[:group_id]).contacts.page(params[:page]).order(created_at: :desc) # another way to get group_id
@@ -19,7 +20,7 @@ class ContactsController < ApplicationController
         @contact = Contact.new(contact_params)
         if @contact.save
           flash[:success] = "Contact was successfully created."
-          redirect_to contacts_path
+          redirect_to contacts_path(previous_query_string)
         else
           render 'new'
         end
@@ -33,7 +34,7 @@ class ContactsController < ApplicationController
       # @contact = Contact.find(params[:id])
       if @contact.update(contact_params)
          flash[:success] = "Contact was successfully updated."
-         redirect_to contacts_path
+         redirect_to contacts_path(previous_query_string)
       else
          render 'edit'
       end
@@ -43,7 +44,7 @@ class ContactsController < ApplicationController
       # @contact = Contact.find(params[:id])
       @contact.destroy
       flash[:success] = "Contact was successfully deleted."
-      redirect_to contacts_path
+      redirect_to contacts_path(previous_query_string)
     end
 
     private
@@ -54,5 +55,9 @@ class ContactsController < ApplicationController
 
     def find_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def previous_query_string
+      session[:selected_group_id] ? {group_id: session[:selected_group_id]} : {}
     end
 end
