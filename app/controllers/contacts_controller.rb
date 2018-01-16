@@ -1,20 +1,8 @@
 class ContactsController < ApplicationController
   before_action :find_contact, only: [:edit,:update,:destroy]
     def index
-    	#@contacts = Contact.all
-    	#@contacts = Contact.page.per(10) kaminari GEM
       session[:selected_group_id] = params[:group_id]
-      if params[:group_id] && !params[:group_id].empty?
-         #@contacts = Contact.where(group_id: params[:group_id]).page(params[:page]) #use where method for group_id param
-         group = Group.find(params[:group_id])
-         if params[:term] && !params[:term].empty?
-           @contacts = group.contacts.where('name LIKE ?', "%#{params[:term]}%").page(params[:page]).order(created_at: :desc) # another way to get group_id
-         else
-           @contacts = group.contacts.page(params[:page]).order(created_at: :desc) # another way to get group_id
-         end
-      else
-    	   @contacts = Contact.where('name LIKE ?', "%#{params[:term]}%").order(created_at: :desc).page(params[:page]) #with default page set on kaminari Config
-      end
+      @contacts = Contact.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #with default page set on kaminari Config
     end
 
     def new

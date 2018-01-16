@@ -16,4 +16,28 @@ class Contact < ApplicationRecord
     # compile URL which can be used in <img src="RIGHT_HERE"...
     "https://www.gravatar.com/avatar/#{hash}"
   end
+
+  # scope :search, -> (term) { where('name LIKE ?', "%#{term}%") if term && !term.empty? }
+  scope :search, -> (term) do
+    where('LOWER(name) LIKE :term or LOWER(company) LIKE :term or LOWER(email) LIKE :term', term: "%#{term.downcase}%") if term.present?
+  end
+
+  # def self.search(term)
+  #   if term && !term.empty?
+  #     where('name LIKE ?', "%#{term}%")
+  #   else
+  #     all
+  #   end
+  # end
+
+  # scope :by_group, -> (group_id) { where(group_id: group_id) if group_id && !group_id.empty? }
+  scope :by_group, -> (group_id) { where(group_id: group_id) if group_id.present? }
+
+  # def self.by_group(group_id)
+  #   if group_id && !group_id.empty?
+  #     where(group_id: group_id)
+  #   else
+  #     all
+  #   end
+  # end
 end
