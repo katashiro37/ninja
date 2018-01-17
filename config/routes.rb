@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   # get 'contact/:id/edit', to: 'contacts#edit', as: 'edit_contact'
   # patch 'contacts/:id/update', to: 'contacts#update', as: 'update_contact'
   # delete 'contacts/:id/destroy', to: 'contacts#destroy', as: 'destroy_contact'
-  resources :contacts, except:[:show]
+  resources :contacts, except:[:show] do
+      # collection do
+      #   get 'autocomplete'
+      # end
+      get 'autocomplete', on: :collection
+  end
+
   root 'contacts#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
