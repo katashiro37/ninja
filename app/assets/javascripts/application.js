@@ -14,7 +14,6 @@
 //= require bootstrap-sprockets
 //= require jasny-bootstrap.min
 //= require rails-ujs
-//= require jquery_ujs
 //= require turbolinks
 //= require jquery-ui
 //= require jquery-ui/core
