@@ -23,6 +23,12 @@
 //= require_tree .
 
 
+// For Rails 5 Use the jquery.turbolinks gem and using
+// $( document ).on('turbolinks:load', function() {
+//   // your code
+// }
+
+
 $( document ).on('turbolinks:load',function(){
     $('#term').autocomplete({
           source: "/contacts/autocomplete",
