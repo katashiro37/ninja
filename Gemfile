@@ -66,3 +66,5 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 gem 'devise', '~> 4.4'
+
+# gem 'bootstrap', '~> 4.0.0.beta3'
