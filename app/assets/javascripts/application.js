@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap/dropdown
 //= require jasny-bootstrap.min
 //= require rails-ujs
 //= require turbolinks
