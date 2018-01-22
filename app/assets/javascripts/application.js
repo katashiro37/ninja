@@ -20,6 +20,7 @@
 //= require jquery-ui/core
 //= require jquery-ui/widget
 //= require jquery-ui/position
+//= require toastr
 //= require_tree .
 
 
@@ -39,9 +40,6 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
-  $('#alert-mongoloid').delay(2000).slideUp(500, function() {
-    $('#alert-mongoloid').alert('close');
-  });
 });
 
 $(document).ready(function() {

@@ -6,23 +6,6 @@
   <!-- <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> -->
   <div class="panel-body">
 
-    <% if @contact.errors.any? %>
-      <div class="row">
-        <div class="col-md-12">
-          <div class= "alert alert-danger">
-            <!-- <h3>Please correct this following errors:</h3> -->
-            <h3>Please fill in the form correctly!</h3>
-
-            <ul>
-              <%# @contact.errors.full_messages.each do |message| %>
-                 <!-- <li><%#= message %></li> -->
-              <%# end %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
     <div class="form-horizontal">
       <div class="row">
         <div class="col-md-8">
@@ -36,6 +19,7 @@
               <% if has_errors?(@contact, :name) %>
                 <span class="help-block">
                   <%= get_error(@contact, :name) %>
+                  <%= flash[:error] %>
                 </span>
               <% end %>
             </div>
@@ -49,13 +33,6 @@
               <%= f.text_field :company, class: "form-control" %>
             </div>
           </div>
-
-          <!-- <div class="form-group">
-            <%= f.label :email, class: "control-label col-md-3" %>
-            <div class="col-md-8">
-              <%= f.text_field :email, class: "form-control" %>
-            </div>
-          </div> -->
 
           <%= content_tag :div, class: "form-group #{'has-error' if has_errors?(@contact, :email)}" do %>
             <%= f.label :email, class: "control-label col-md-3" %>

@@ -69,3 +69,5 @@ gem 'devise', '~> 4.4'
 
 # gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'pundit', '~> 1.1'
+
+gem 'toastr-rails', '~> 1.0', '>= 1.0.3' # customize flash messages
