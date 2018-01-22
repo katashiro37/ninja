@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.build(group_params)
+    #@group = Group.new(group_params)
     if @group.save
       render json: @group, status: :created
     else
