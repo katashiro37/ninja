@@ -1,2 +1,32 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Home</h1>
+<!-- <% if @contacts.present?%>
+  <label>
+    <strong><%= @contacts.name %>
+      XXXXXXXXXXX</strong>
+  </label>
+<% end %> -->
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody id="myTable">
+    <%#= render partial: 'contacts', collection: @customer %>
+      <% @contacts.each do |c| %>
+        <tr>
+          <td><%= c.name %></td>
+          <td><%= c.company %></td>
+          <td><%= c.email %></td>
+          <td><%= c.phone %></td>
+          <td><%= c.address %></td>
+          <td><%= image_tag c.avatar.url(:thumb), class: "media-object", style: "width:100px; height: 100px;" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
