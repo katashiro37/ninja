@@ -29,13 +29,31 @@
 // }
 
 
-$( document ).on('turbolinks:load',function(){
-    $('#term').autocomplete({
-          source: "/contacts/autocomplete",
-          minLength: 3,
-          select: function (event, ui){
-            $('#term').val(ui.item.value);
-            $(this).closest('form').submit();
-          }
-    });
+$(document).on('turbolinks:load', function() {
+  $('#term').autocomplete({
+    source: "/contacts/autocomplete",
+    minLength: 3,
+    select: function(event, ui) {
+      $('#term').val(ui.item.value);
+      $(this).closest('form').submit();
+    }
+  });
+
+  $('#alert-mongoloid').delay(2000).slideUp(1000, function() {
+    $('#alert-mongoloid').alert('close');
+  });
 });
+
+$(document).ready(function() {
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+// $(document).ready( function() {
+//     //$('.alert').delay(3000).fadeOut();
+//     $(".alert-danger" ).fadeOut(3000);
+// });
