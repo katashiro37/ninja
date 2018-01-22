@@ -39,7 +39,7 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
-  $('#alert-mongoloid').delay(2000).slideUp(1000, function() {
+  $('#alert-mongoloid').delay(2000).slideUp(500, function() {
     $('#alert-mongoloid').alert('close');
   });
 });

@@ -3,8 +3,8 @@ class ContactsController < ApplicationController
   before_action :find_contact, only: [:edit,:update,:destroy]
     def index
       session[:selected_group_id] = params[:group_id]
-      #@contacts = Contact.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #with default page set on kaminari Config
-      @contacts = current_user.contacts.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #using user_id as reference
+      @contacts = Contact.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #with default page set on kaminari Config
+      #@contacts = current_user.contacts.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #using user_id as reference
     end
 
     def new
@@ -30,9 +30,11 @@ class ContactsController < ApplicationController
 
     def edit
       # @contact = Contact.find(params[:id])
+      #authorize @contact
     end
 
     def update
+      authorize @contact
       # @contact = Contact.find(params[:id])
       if @contact.update(contact_params)
          flash[:success] = "Contact was successfully updated."
@@ -43,6 +45,7 @@ class ContactsController < ApplicationController
     end
 
     def destroy
+      authorize @contact
       # @contact = Contact.find(params[:id])
       @contact.destroy
       flash[:success] = "Contact was successfully deleted."
