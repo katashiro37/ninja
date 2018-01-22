@@ -1,12 +1,4 @@
-<h1>Home</h1>
-<!-- <% if @contacts.present?%>
-  <label>
-    <strong><%= @contacts.name %>
-      XXXXXXXXXXX</strong>
-  </label>
-<% end %> -->
-
-<table class="table table-bordered table-striped">
+<!-- <table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Id</th>
@@ -29,4 +21,15 @@
         </tr>
       <% end %>
     </tbody>
-  </table>
+  </table> -->
+
+</div class="col-md-10 col-md-offset-1">
+    <div class="jumbotron text-center">
+      <h1>Free Online Contact Manager</h1>
+      <p class="lead">Organize your contacts freely and easily</p>
+      <p>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "Sign in", new_user_session_path, class: "btn btn-default btn-lg" %>
+      </p>
+    </div>
+</div>
