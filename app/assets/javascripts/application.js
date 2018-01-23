@@ -42,6 +42,15 @@ $(document).on('turbolinks:load', function() {
 
 });
 
+//history.pushState(state, title, url)
+
+$(document).on('click', '.pagination a[data-remote=true]', function(){
+    history.pushState({},'',$(this).attr('href')) ;
+});
+
+$(window).on('popstate',function(){
+    $.get(document.location.href);
+});
 // $(document).ready(function() {
 //   $("#myInput").on("keyup", function() {
 //     var value = $(this).val().toLowerCase();
