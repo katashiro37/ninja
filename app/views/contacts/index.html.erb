@@ -7,7 +7,7 @@
 		<p class="alert"><%= alert %></p> -->
 		<%#= render "layouts/messages" if !flash.empty? %>
 
-		
+
 		<div class="panel panel-default">
 			<div class="panel-heading clearfix">
 				<div class="pull-left">
@@ -22,7 +22,7 @@
 
 			</div>
 
-			<table class="table">
+			<table class="table" id="contacts">
 
 			 <%= render @contacts %>
 
@@ -38,9 +38,9 @@
 
 			</div>
 
-		<div class="text-center">
+		<div class="text-center" id="paginator">
 
-		 <%= paginate @contacts %>
+		 <%= paginate @contacts, remote: true %>
 
 		</div>
 
