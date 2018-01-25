@@ -2,7 +2,7 @@
             <!-- <a href="#" class="list-group-item active">All Contact <span class="badge">10</span></a> -->
             <!--active is use to see if group_id found and pass as a variable "active" to work the bootstrap active class -->
               <% active = (params[:group_id] == nil || params[:group_id].empty?) && !session[:selected_group_id] ? 'active' : '' %>
-              <%= link_to contacts_path, class: "list-group-item #{active}" do %>
+              <%= link_to contacts_path, class: "list-group-item #{active}", remote: true do %>
                 All Contact <span class="badge"><%#= Contact.count %><%= current_user.contacts.count %></span>
               <% end %>
 
@@ -11,7 +11,7 @@
               <!-- check if value is present in session & check value is equal to group_id in database -->
                 <% active = params[:group_id].to_i == group.id || (session[:selected_group_id] && session[:selected_group_id].to_i == group.id) ? 'active' : '' %>
                 <!-- <a href="" class="list-group-item">Family <span class="badge">4</span></a> -->
-                <%= link_to contacts_path(group_id: group.id), class: "list-group-item #{active}" do %>
+                <%= link_to contacts_path(group_id: group.id), class: "list-group-item #{active}", remote: true do %>
                   <%= group.name %> <span class="badge"><%= group.contacts.count %> </span></a>
                 <% end %>
               <% end %>

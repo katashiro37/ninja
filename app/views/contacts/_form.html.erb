@@ -1,39 +1,26 @@
 <%#= form_for(@contact, url: @contact.new_record? ? create_contact_path : update_contact_path(@contact), html: {multipart: true}) do |f| %>
-<%= form_for(@contact, html: {multipart: true}) do |f| %>
+<%= form_for(@contact, html: { multipart: true }, remote: local_assigns[:ajax_form]) do |f| %>
 
-
-<!-- OLD METHOD OF FORM <form action="/contacts/create" method= "post"> -->
-  <!-- <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> -->
   <div class="panel-body">
-
-    <% if @contact.errors.any? %>
-      <div class="row">
-        <div class="col-md-12">
-          <div class= "alert alert-danger">
-            <h3>Please correct this following errors:</h3>
-
-            <ul>
-              <% @contact.errors.full_messages.each do |message| %>
-                 <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    <% end %>
 
     <div class="form-horizontal">
       <div class="row">
         <div class="col-md-8">
 
-          <div class="form-group">
+<!-- updated customized error validator  -->
+          <%= content_tag :div, class: "form-group #{'has-error' if has_errors?(@contact, :name)}" do %>
+          <%#= content_tag :div, class: "form-group #{'has-error' if @contact.errors.messages[:name].present?}" do %>
             <%= f.label :name, class: "control-label col-md-3" %>
-            <!-- <label for="name" class="control-label col-md-3">Name</label> -->
             <div class="col-md-8">
               <%= f.text_field :name, class: "form-control" %>
-              <!-- <input type="text" name="contact[name]" value="<%= @contact.name %>" id="name" class="form-control"> -->
+              <% if has_errors?(@contact, :name) %>
+                <span class="help-block">
+                  <%= get_error(@contact, :name) %>
+                  <%= flash[:error] %>
+                </span>
+              <% end %>
             </div>
-          </div>
+          <% end %>
 
 
 
@@ -44,12 +31,17 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <%= content_tag :div, class: "form-group #{'has-error' if has_errors?(@contact, :email)}" do %>
             <%= f.label :email, class: "control-label col-md-3" %>
             <div class="col-md-8">
               <%= f.text_field :email, class: "form-control" %>
+              <% if has_errors?(@contact, :email) %>
+                <span class="help-block">
+                  <%= get_error(@contact, :email) %>
+                </span>
+              <% end %>
             </div>
-          </div>
+          <% end %>
 
           <div class="form-group">
             <%= f.label :phone, class: "control-label col-md-3" %>
@@ -65,7 +57,7 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <%= content_tag :div, class: "form-group #{'has-error' if has_errors?(@contact, :group_id)}" do %>
             <%= f.label :group_id, class: "control-label col-md-3" %>
             <div class="col-md-5">
               <%#= f.collection_select :group_id, Group.all, :id, :name, {prompt:"Select Group"}, class: "form-control" %>
@@ -77,7 +69,17 @@
             <div class="col-md-3">
               <a href="#" id="add-group-btn" class="btn btn-default btn-block">Add Group</a>
             </div>
-          </div>
+              <% if has_errors?(@contact, :group_id) %>
+                <div class="form-group">
+                  <div class="col-sm-12 col-sm-offset-3">
+                    <span class="help-block">
+                      <%= get_error(@contact, :group_id) %>
+                    </span>
+                  </div>
+                </div>
+              <% end %>
+          <% end %>
+
           <!-- new -->
           <div class="form-group" id="add-new-group">
           <!-- old <div class="form-group" id="add-new-group" style="display: none;"> -->
@@ -110,50 +112,28 @@
       </div>
     </div>
   </div>
-  <div class="panel-footer">
-    <div class="row">
-      <div class="col-md-8">
+
+  <%# unless local_assigns[:ajax_form] %>
+      <!-- <div class="panel-footer">
         <div class="row">
-          <div class="col-md-offset-3 col-md-8">
-            <%= f.submit @contact.new_record? ? "Save" : "Update", class: "btn btn-primary" %>
-            <!-- old button <button type="submit" class="btn btn-primary">Save</button> -->
-            <a href="#" class="btn btn-default">Cancel</a>
-            <%= link_to 'Back', contacts_path, class: "btn btn-default" %>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-offset-3 col-md-6">
+                <%#= f.submit @contact.new_record? ? "Save" : "Update", class: "btn btn-primary" %>
+                <a href="#" class="btn btn-default">Cancel</a>
+                <%#= link_to 'Back', contacts_path, class: "btn btn-default" %>
+              </div>
+            </div>
           </div>
         </div>
+      </div> -->
+  <%# end %>
+    <div class="modal-footer">
+      <div class="col-lg-6 col-lg-offset-5">
+        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+        <%= f.submit @contact.new_record? ? "Save Record" : "Save Changes", class: "btn btn-primary btn-lg" %>
       </div>
     </div>
-  </div>
+
 <!-- </form> -->
 <% end %>
-
-
-<!-- OLD FORM -->
-<!-- <div class="form-group">
-  <label for="company" class="control-label col-md-3">Company</label>
-  <div class="col-md-8">
-    <input type="text" name="contact[company]" id="company" class="form-control">
-  </div>
-</div>
-
-<div class="form-group">
-  <label for="email" class="control-label col-md-3">Email</label>
-  <div class="col-md-8">
-    <input type="text" name="contact[email]" id="email" class="form-control">
-  </div>
-</div>
-
-<div class="form-group">
-  <label for="phone" class="control-label col-md-3">Phone</label>
-  <div class="col-md-8">
-    <input type="text" name="contact[phone]" id="phone" class="form-control">
-  </div>
-</div>
-
-<div class="form-group">
-  <label for="name" class="control-label col-md-3">Address</label>
-  <div class="col-md-8">
-    <textarea name="contact[address]" id="address" rows="3" class="form-control"></textarea>
-  </div>
-</div>
- -->

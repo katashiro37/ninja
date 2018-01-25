@@ -1,0 +1,4 @@
+$('#contacts').html('<%= j render(@contacts) %>');
+$('#paginator').html('<%= j paginate(@contacts, remote: true) %>');
+$('#sidebar').html('<%= j render("layouts/sidebar") %>');
+$('#group_id').html('<%= params[:group_id] %>');

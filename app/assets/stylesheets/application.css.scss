@@ -15,6 +15,7 @@
  *= require jquery-ui
  *= require jquery-ui/autocomplete
  *= require jquery-ui/menu
+ *= require toastr
  *= require_self
  */
 
@@ -100,4 +101,11 @@ body {
 
 .jumbotron{
 	background: #f7f7f7;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #222;
+		border-color: #222;
+    color: white;
 }
