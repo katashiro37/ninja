@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       #   get 'autocomplete'
       # end
       get 'autocomplete', on: :collection
+      get 'delete', on: :member
   end
 
   post '/groups', to: 'groups#create'

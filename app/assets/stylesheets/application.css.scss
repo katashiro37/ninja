@@ -102,3 +102,10 @@ body {
 .jumbotron{
 	background: #f7f7f7;
 }
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #222;
+		border-color: #222;
+    color: white;
+}

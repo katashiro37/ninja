@@ -1,2 +1,4 @@
-$('#contacts').html('<%= escape_javascript render(@contacts) %>');
-$('#paginator').html('<%= escape_javascript paginate(@contacts, remote: true) %>');
+$('#contacts').html('<%= j render(@contacts) %>');
+$('#paginator').html('<%= j paginate(@contacts, remote: true) %>');
+$('#sidebar').html('<%= j render("layouts/sidebar") %>');
+$('#group_id').html('<%= params[:group_id] %>');
