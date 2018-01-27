@@ -7,3 +7,28 @@
       </p>
     </div>
 </div>
+<!--
+<div class="owl-carousel owl-theme">
+
+</div> -->
+
+<div class="container-fluid">
+<div class="jumbotron">
+  <div class="row">
+
+    <div class="col-lg-12">
+
+      <div id="main-slider" class="owl-carousel owl-theme">
+        <% @contacts.each do |contact| %>
+          <div>
+            <%= image_tag contact.avatar.url(:medium) %>
+            <h4 align="center"><%= link_to contact.name, contacts_path %></h4>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</div>

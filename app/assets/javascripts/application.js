@@ -26,6 +26,7 @@
 //= require toastr
 //= require spin
 //= require jquery.spin
+//= require owl.carousel
 //= require_tree .
 
 
@@ -69,6 +70,62 @@ $( document ).on('turbolinks:load', function() {
     // }).ajaxStop(function() {
     //     $(".spinner").hide();
     // })
+
+
+    // $('.owl-carousel').owlCarousel({
+    //     loop:true,
+    //     margin:10,
+    //     nav:true,
+    //     responsive:{
+    //         0:{
+    //             items:1
+    //         },
+    //         600:{
+    //             items:3
+    //         },
+    //         1000:{
+    //             items:5
+    //         }
+    //     }
+    // });
+
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        loop:true,
+        margin:13,
+        items: 4,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        fluidSpeed:true,
+        autowidth:false,
+        dots: false,
+        // navigation: true,
+        responsiveClass:false,
+        responsive:{
+            0:{
+                items:1,
+                nav:false
+                },
+         600:{
+             items:3,
+             nav:false
+             },
+         1000:{
+             items:5,
+             nav:false,
+             loop:false
+             }
+        }
+    });
+    $('.play').on('onmouseout',function(){
+        owl.trigger('play.owl.autoplay',[1000])
+    });
+    $('.stop').on('mouseover',function(){
+        owl.trigger('stop.owl.autoplay')
+    });
+
+
 
 });
 
