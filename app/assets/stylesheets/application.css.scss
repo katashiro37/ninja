@@ -18,11 +18,13 @@
  *= require toastr
  *= require owl.carousel
  *= require owl.theme.default
+ *= require font-awesome
  *= require_self
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 
 body {

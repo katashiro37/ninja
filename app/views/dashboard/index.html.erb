@@ -17,12 +17,11 @@
   <div class="row">
 
     <div class="col-lg-12">
-
       <div id="main-slider" class="owl-carousel owl-theme">
         <% @contacts.each do |contact| %>
           <div>
             <%= image_tag contact.avatar.url(:medium) %>
-            <h4 align="center"><%= link_to contact.name, contacts_path %></h4>
+            <h4 align="center"><%= link_to contact.name, contact, remote: true%></h4>
           </div>
         <% end %>
       </div>
@@ -32,3 +31,19 @@
   </div>
 </div>
 </div>
+
+  <%= render 'layouts/form_modal' %>
+
+
+<!-- 
+<%# @contacts.in_groups_of(3) do |group| %>
+  <div class="row">
+    <%# group.compact.each do |contact| %>
+      <div class="col-md-4">
+        <%#= image_tag contact.avatar.url(:thumb) %>
+        <h4><%#= link_to contact.name, contact %></h4>
+        <%#= contact.email %>
+      </div>
+    <%# end %>
+  </div>
+<%# end %> -->

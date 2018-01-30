@@ -99,7 +99,7 @@ $( document ).on('turbolinks:load', function() {
         autoplayHoverPause:true,
         fluidSpeed:true,
         autowidth:false,
-        dots: false,
+        dots: true,
         // navigation: true,
         responsiveClass:false,
         responsive:{

@@ -1,14 +1,18 @@
 class ContactsController < ApplicationController
   # protect_from_forgery with: :exception
   before_action :authenticate_user! # this will protect the page when not signed in
-  before_action :find_contact, only: [:edit,:update,:destroy, :delete]
-  before_action :all_contacts, only: [:index]
+  before_action :find_contact, only: [:show, :edit,:update,:destroy, :delete]
+  before_action :all_contacts, only: [:index, :show]
 
 
     def index
       session[:selected_group_id] = params[:group_id]
 #      @contacts = Contact.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #with default page set on kaminari Config
-      #@contacts = current_user.contacts.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #using user_id as reference
+      # @contacts = current_user.contacts.by_group(params[:group_id]).search(params[:term]).order(created_at: :desc).page(params[:page]) #using user_id as reference
+    end
+
+    def show
+       # @contacts = Contact.find(params[:id])
     end
 
     def new
