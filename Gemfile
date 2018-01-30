@@ -73,3 +73,7 @@ gem 'pundit', '~> 1.1'
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3' # customize flash messages
 
 gem 'spinjs-rails', '~> 1.4'
+
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.3'
+
+gem 'timepiece'

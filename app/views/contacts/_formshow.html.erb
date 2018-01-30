@@ -1,0 +1,43 @@
+<!-- 
+
+
+/*button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+*/
+ -->
+
+
+
+<%= form_for(@contact, html: { multipart: true }, remote: local_assigns[:ajax_form]) do |f| %>
+
+		<div class="card">
+		  <br>
+		  <%= image_tag @contact.avatar.url(:medium) %>
+		  <h3><%= @contact.name %></h3>
+		  <p class="title"><i class="fa fa-superpowers"></i>CEO & Founder</p>
+		  <p><%= @contact.company %></p>
+		  <p><i class="fa fa-envelope"></i><%= @contact.email %></p>
+		  <p><i class="fa fa-phone"></i><%= @contact.phone %></p>
+		  <div style="margin: 24px 0;">
+		    <a class="id-link" href="#"><i class="fa fa-dribbble"></i></a> 
+		    <a class="id-link" href="#"><i class="fa fa-twitter"></i></a>  
+		    <a class="id-link" href="#"><i class="fa fa-linkedin"></i></a>  
+		    <a class="id-link" href="#"><i class="fa fa-facebook"></i></a> 
+		 </div>
+		<div class="modal-footer">
+	      
+	        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Close</button>
+	      
+	  </div>
+  </div>
+<% end %>

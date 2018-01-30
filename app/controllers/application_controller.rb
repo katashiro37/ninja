@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :show_404
 
   def after_sign_in_path_for(resource)
-      stored_location_for(resource) || dashboard_path # will redirect_to last location visited before sign in
+      stored_location_for(resource) || dashboard_index_path # will redirect_to last location visited before sign in
   end
 
   def after_sign_up_path_for(resource)
-      stored_location_for(resource) || dashboard_path # will redirect_to last location visited before sign in
+      stored_location_for(resource) || dashboard_index_path # will redirect_to last location visited before sign in
   end
 
   private

@@ -7,3 +7,106 @@
       </p>
     </div>
 </div>
+
+
+<div class="container-fluid">
+<div class="panel panel-default">
+  <div class="panel panel-body">
+   <div class="col-sm-6">
+      <div class="row">
+        <div class="well">
+        <!-- <div class="col-sm-6" style="background-color:#222;"> -->
+         <center> 
+          <h2><i class='fa fa-address-book-o'></i> My Friends </h2>
+          <div>
+            <div id="main-slider" class="owl-carousel owl-theme">
+              <% @contacts.each do |contact| %>
+                <div>
+                  <br>
+                  <%= image_tag contact.avatar.url(:medium) %>
+                  <h4 align="center"><%= link_to contact.name, contact, remote: true%></h4>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </center>
+        <!-- </div> -->
+        </div>
+      </div>
+
+       <div class="row" style="background-color:#dd5638;">
+        <!-- <div class="col-sm-6" style="background-color:#dd5638;"> -->
+        <center>
+         <h2> <i class='fa fa-clock-o'></i>Timepiece <%= Time.zone.today %></h2>
+          <div class="col-sm-3">
+            <h4> Manila <%= timepiece('Singapore') %></h4>
+            <h4> London <%= timepiece('London') %></h4>
+            <h4> Paris <%= timepiece('Paris') %></h4>
+          </div>
+          <div class="col-sm-3">
+            <h4> Auckland <%= timepiece('Auckland') %></h4>
+            <h4> Lisbon <%= timepiece('Lisbon') %></h4>
+            <h4> Moscow <%= timepiece('Moscow') %></h4>
+          </div>
+          <div class="col-sm-3">
+            <h4> Tokyo <%= timepiece('Tokyo') %></h4>
+            <h4> Hongkong <%= timepiece('Hongkong') %></h4>
+            <h4> Xmas Countdown <%= countdown(Time.new(2018, 12, 25)) %></h4>
+          </div>
+          <div class="col-sm-3">
+            <h4> Helsinki <%= timepiece('Helsinki') %></h4>
+            <h4> Madrid <%= timepiece('Madrid') %></h4>
+            <h4> Bday Countdown <%= countdown(Time.new(2018, 11, 20)) %></h4>
+          </div>
+        </center>
+       </div>
+     </div><!--column 1-->
+
+     
+     <div class="col-sm-6">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="well">
+              <center><h1><i class="fa fa-user-circle"></i> ABOUT ME</h1></center>
+                <div class="card">
+                      <br>
+                      <%= image_tag @contacts.find(74).avatar.url(:medium) %>
+                      <h2><%= @contacts.find(74).name %></h2>
+                      <p class="title"><i class="fa fa-superpowers"></i>CEO & Founder</p>
+                      <p><%= @contacts.find(74).company %></p>
+                      <p><i class="fa fa-envelope"></i><%= @contacts.find(74).email %></p>
+                      <p><i class="fa fa-phone"></i><%= @contacts.find(74).phone %></p>
+                      <p><i class="fa fa-info-circle"></i><%= @contacts.find(74).address %></p>
+                      <div style="margin: 0px 0;">
+                        <a href="#" style="font-size:38px;"><i class="fa fa-dribbble"></i></a> 
+                        <a href="#" style="font-size:38px;"><i class="fa fa-twitter"></i></a>  
+                        <a href="#" style="font-size:38px;"><i class="fa fa-linkedin"></i></a>  
+                        <a href="#" style="font-size:38px;"><i class="fa fa-facebook"></i></a> 
+                     </div>
+                </div>
+            </div>
+        </div>
+      </div>
+     </div><!--column 2-->
+
+    </div><!--panel body -->
+  </div><!--panel -->
+</div>
+
+
+
+  <%= render 'layouts/form_id' %>
+
+
+<!-- 
+<%# @contacts.in_groups_of(3) do |group| %>
+  <div class="row">
+    <%# group.compact.each do |contact| %>
+      <div class="col-md-4">
+        <%#= image_tag contact.avatar.url(:thumb) %>
+        <h4><%#= link_to contact.name, contact %></h4>
+        <%#= contact.email %>
+      </div>
+    <%# end %>
+  </div>
+<%# end %> -->
