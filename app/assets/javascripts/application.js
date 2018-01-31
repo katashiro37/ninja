@@ -27,6 +27,7 @@
 //= require spin
 //= require jquery.spin
 //= require owl.carousel
+//= require timepiece
 //= require_tree .
 
 
@@ -92,7 +93,7 @@ $( document ).on('turbolinks:load', function() {
     var owl = $('.owl-carousel');
     owl.owlCarousel({
         loop:true,
-        margin:13,
+        margin:16,
         items: 4,
         autoplay:true,
         autoplayTimeout:3000,
@@ -124,8 +125,6 @@ $( document ).on('turbolinks:load', function() {
     $('.stop').on('mouseover',function(){
         owl.trigger('stop.owl.autoplay')
     });
-
-
 
 });
 
@@ -214,3 +213,31 @@ toastr.options = {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 }
+
+
+
+// function updateClock ( )
+//   {
+//     var currentTime = new Date ( );
+//     var currentHours = currentTime.getHours ( );
+//     var currentMinutes = currentTime.getMinutes ( );
+//     var currentSeconds = currentTime.getSeconds ( );
+
+//     // Pad the minutes and seconds with leading zeros, if required
+//     currentMinutes = ( currentMinutes  12 ) ? currentHours - 12 : currentHours;
+
+//     // Convert an hours component of "0" to "12"
+//     currentHours = ( currentHours == 0 ) ? 12 : currentHours;
+
+//     // Compose the string for display
+//     var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+    
+    
+//     $("#clock").html(currentTimeString);
+        
+//  }
+
+// $(document).ready(function()
+// {
+//    setInterval('updateClock()', 1000);
+// });

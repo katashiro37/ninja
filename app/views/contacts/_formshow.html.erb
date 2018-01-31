@@ -1,19 +1,7 @@
+<!-- 
 
-<style>
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-}
 
-.title {
-  color: grey;
-  font-size: 18px;
-}
-
-button {
+/*button {
   border: none;
   outline: 0;
   display: inline-block;
@@ -25,25 +13,15 @@ button {
   width: 100%;
   font-size: 18px;
 }
-
-a {
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
-}
-
-button:hover, a:hover {
-  opacity: 0.7;
-}
-
-
-</style>
+*/
+ -->
 
 
 
 <%= form_for(@contact, html: { multipart: true }, remote: local_assigns[:ajax_form]) do |f| %>
 
 		<div class="card">
+		  <br>
 		  <%= image_tag @contact.avatar.url(:medium) %>
 		  <h3><%= @contact.name %></h3>
 		  <p class="title"><i class="fa fa-superpowers"></i>CEO & Founder</p>
@@ -51,15 +29,15 @@ button:hover, a:hover {
 		  <p><i class="fa fa-envelope"></i><%= @contact.email %></p>
 		  <p><i class="fa fa-phone"></i><%= @contact.phone %></p>
 		  <div style="margin: 24px 0;">
-		    <a href="#"><i class="fa fa-dribbble"></i></a> 
-		    <a href="#"><i class="fa fa-twitter"></i></a>  
-		    <a href="#"><i class="fa fa-linkedin"></i></a>  
-		    <a href="#"><i class="fa fa-facebook"></i></a> 
+		    <a class="id-link" href="#"><i class="fa fa-dribbble"></i></a> 
+		    <a class="id-link" href="#"><i class="fa fa-twitter"></i></a>  
+		    <a class="id-link" href="#"><i class="fa fa-linkedin"></i></a>  
+		    <a class="id-link" href="#"><i class="fa fa-facebook"></i></a> 
 		 </div>
 		<div class="modal-footer">
 	      
-	        <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Close</button>
 	      
-	    </div>
-    	</div>
+	  </div>
+  </div>
 <% end %>
