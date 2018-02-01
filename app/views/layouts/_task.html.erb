@@ -1,0 +1,24 @@
+
+<%# @tasks.each do |task| %>
+	<!-- <div class="dragWrapper">
+		<div class="panel panel-default" data-id="mytask" data-update-url="">
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><%#= task.name %></h3>
+		  </div>
+		  <div class="panel-body">
+		    <%#= task.start %>
+		    <%#= task.deadline %>
+		  </div>
+		</div>
+	</div> -->
+<%# end %>
+
+<ul class="list-group" id="tasks" data-update-url="<%= sort_tasks_url %>">
+<% @tasks.each do |task| %>
+	<%= content_tag_for(:li, task, :class => "list-group-item") do %>
+		<center>
+	    <h3><%= link_to h(task.name), task %> due-date: <%= task.deadline %></h3>
+	    </center>
+	<% end %>
+<% end %>
+</ul>

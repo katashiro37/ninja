@@ -1,3 +1,4 @@
+
 </div class="col-md-10 col-md-offset-1">
     <div class="jumbotron text-center">
       <h2>Hello <%= current_user.name %></h2>
@@ -56,7 +57,8 @@
           <div class="col-sm-3">
             <h4> Helsinki <%= timepiece('Helsinki') %></h4>
             <h4> Madrid <%= timepiece('Madrid') %></h4>
-            <h4> Bday Countdown <%= countdown(Time.new(2018, 11, 20)) %></h4>
+            <h4> Sydney <%= timepiece('Sydney') %></h4>
+            
           </div>
         </center>
        </div>
@@ -77,11 +79,11 @@
                       <p><i class="fa fa-envelope"></i><%= @contacts.find(74).email %></p>
                       <p><i class="fa fa-phone"></i><%= @contacts.find(74).phone %></p>
                       <p><i class="fa fa-info-circle"></i><%= @contacts.find(74).address %></p>
-                      <div style="margin: 0px 0;">
-                        <a href="#" style="font-size:38px;"><i class="fa fa-dribbble"></i></a> 
-                        <a href="#" style="font-size:38px;"><i class="fa fa-twitter"></i></a>  
-                        <a href="#" style="font-size:38px;"><i class="fa fa-linkedin"></i></a>  
-                        <a href="#" style="font-size:38px;"><i class="fa fa-facebook"></i></a> 
+                      <div style="margin: 20px 0;">
+                        <a href="#"><i class="fa fa-dribbble fa-2x"></i></a> 
+                        <a href="#"><i class="fa fa-twitter fa-2x"></i></a>  
+                        <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>  
+                        <a href="#"><i class="fa fa-facebook fa-2x"></i></a> 
                      </div>
                 </div>
             </div>
@@ -92,8 +94,6 @@
     </div><!--panel body -->
   </div><!--panel -->
 </div>
-
-
 
   <%= render 'layouts/form_id' %>
 
@@ -110,3 +110,32 @@
     <%# end %>
   </div>
 <%# end %> -->
+
+
+
+    
+  <div class="col-lg-12">
+   
+      <div class="row">
+      <!-- <div class="col-md-5 col-md-offset-4 sortable"> -->
+        <% if @tasks.any? %>
+         
+           <div class="col-lg-6">
+             <div class="panel panel-default">
+               <div class="panel panel-body">
+                <div class="panel-heading"><center><h2><i class="fa fa-tasks"></i>
+ My Tasks</h2></center></div>
+                  <%= render 'layouts/task' %>
+                </div>
+             </div>
+           </div>
+        <% else %>
+        <p>No tasks found <%= link_to "Create Task", new_task_path %></p>
+        <% end %>
+      <!-- </div> -->
+  </div>
+</div>
+
+
+
+

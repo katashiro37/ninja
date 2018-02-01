@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-
+  
+  resources :tasks do
+      collection do
+        post :sort 
+      end
+  end
+  
   get 'home/index'
 
   devise_for :users, path: 'auth', controllers: {registrations: :custom_registrations}, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
@@ -18,7 +24,11 @@ Rails.application.routes.draw do
       get 'delete', on: :member
   end
 
-  resources :dashboard
+  resources :dashboard do
+     collection do
+        post :sort 
+     end
+  end
 
   post '/groups', to: 'groups#create'
 

@@ -12,22 +12,24 @@
 //
 
 //= require jquery
-//= require bootstrap-sprockets
-//= require bootstrap/dropdown
-//= require bootstrap/modal
-//= require bootstrap/transition
-//= require jasny-bootstrap.min
-//= require rails-ujs
-//= require turbolinks
 //= require jquery-ui
 //= require jquery-ui/core
 //= require jquery-ui/widget
 //= require jquery-ui/position
+//= require bootstrap-sprockets
+//= require bootstrap/dropdown
+//= require bootstrap/modal
+//= require bootstrap/transition
+//= require bootstrap-datepicker
+//= require jasny-bootstrap.min
+//= require rails-ujs
+//= require turbolinks
 //= require toastr
 //= require spin
 //= require jquery.spin
 //= require owl.carousel
 //= require timepiece
+
 //= require_tree .
 
 
@@ -62,33 +64,6 @@ $( document ).on('turbolinks:load', function() {
     $('#ajax-spin').hide();
     $('#abc').hide();
 
-     // Shows the default spinner
-
-    // $(".spinner").hide();
-    //
-    // $(document).ajaxStart(function() {
-    //   $(".spinner").fadeIn('slow');
-    // }).ajaxStop(function() {
-    //     $(".spinner").hide();
-    // })
-
-
-    // $('.owl-carousel').owlCarousel({
-    //     loop:true,
-    //     margin:10,
-    //     nav:true,
-    //     responsive:{
-    //         0:{
-    //             items:1
-    //         },
-    //         600:{
-    //             items:3
-    //         },
-    //         1000:{
-    //             items:5
-    //         }
-    //     }
-    // });
 
     var owl = $('.owl-carousel');
     owl.owlCarousel({

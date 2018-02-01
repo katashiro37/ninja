@@ -12,9 +12,11 @@
  *
  *= require_tree .
  *= require jasny-bootstrap.min
+ *= require bootstrap-datepicker
  *= require jquery-ui
  *= require jquery-ui/autocomplete
  *= require jquery-ui/menu
+ *= require jquery-ui/datepicker
  *= require toastr
  *= require owl.carousel
  *= require owl.theme.default
@@ -145,3 +147,4 @@ body {
 .id-link:hover {
   opacity: 0.7;
 }
+
