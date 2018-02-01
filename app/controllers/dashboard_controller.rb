@@ -5,11 +5,10 @@ class DashboardController < ApplicationController
 
 
   def index
-     # @user = current_user
-     # @contacts = @user.contacts.all
+   # @contacts = @user.contacts.all
     # @contacts = Contact.all
-     @contacts = current_user.contacts
-     @tasks = Task.order("position")
+     @contacts = current_user.contacts.all
+     @tasks = current_user.tasks.order("position")
   end
 
   def show
@@ -19,7 +18,7 @@ class DashboardController < ApplicationController
    def sort
      params[:task].each_with_index do |id, index|
         Task.where(id: id).update_all(position: index + 1)
-     end 
+     end
   end
 
   # private

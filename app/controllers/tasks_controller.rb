@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  # before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.order("position")
+    @tasks = current_user.tasks.order("position")
   end
 
   # GET /tasks/1
@@ -28,15 +29,30 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+    # respond_to do |format|
+    #   if @task.save
+    #     format.html { redirect_to @task, notice: 'Task was successfully created.' }
+    #     format.json { render :show, status: :created, location: @task }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @task.errors, status: :unprocessable_entity }
+    #   end
+    # end
+      respond_to do |format|
+          if @task.save
+              format.html do
+                  flash[:success] = "Task was successfully created."
+                  redirect_to tasks_path(previous_query_string)
+              end
+              # format.js { render 'create', status: :created }
+          else
+              format.html do
+                  flash[:error] = "Task failed to be created."
+                  render 'new'
+              end
+              format.js { render 'new', status: :unprocessable_entity }
+          end
       end
-    end
   end
 
   # PATCH/PUT /tasks/1
@@ -76,7 +92,7 @@ class TasksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def task_params
-    params.require(:task).permit(:name, :start, :deadline, :status, :user_id, :position)
+    params.require(:task).permit(:name, :start, :deadline, :status, :user_id)
   end
 
   private :set_task, :task_params 
