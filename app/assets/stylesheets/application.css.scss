@@ -34,6 +34,7 @@
 body {
 	padding-top: 70px;
 	background: #eee;
+	/*background: #222 -webkit-radial-gradient(50% 0, ellipse farthest-corner, #444 0%, #222 100%)*/
 }
 
 .navbar {
@@ -88,9 +89,9 @@ body {
   border-radius: 15px;
 }
 
-.panel-footer.message{
+/*.panel-footer.message{
 	border-top:	0px;
-}
+}*/
 
 .alert-warning{
 	margin-bottom: 0;
@@ -147,4 +148,214 @@ body {
 .id-link:hover {
   opacity: 0.7;
 }
+
+
+
+/*sidebar*/
+
+/* The sidebar menu */
+/*.sidenav {
+    height: 100%; 
+    width: 160px; 
+    position: fixed;
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background: #222 -webkit-radial-gradient(50% 0, ellipse farthest-corner, #444 0%, #222 100%);
+    overflow-x: hidden; 
+    padding-top: 50px;
+}*/
+
+/* The navigation menu links */
+/*.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+*/
+/* When you mouse over the navigation links, change their color */
+/*.sidenav a:hover {
+    color: #f1f1f1;
+}
+*/
+/* Style page content */
+/*.main {
+    margin-left: 160px;
+    padding: 0px 10px;
+}
+*/
+
+ .sidebar {
+     position: fixed;
+     width: 230px;
+     height: 100%;
+     background: #222 -webkit-radial-gradient(50% 0, ellipse farthest-corner, #444 0%, #222 100%);
+     z-index: 1; 
+     top: 0;
+    left: 0;
+    padding-top: 80px;
+    padding-left: 100px;
+ }
+
+
+ .sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+ }
+ .content {
+     margin-left: 120px;
+     height: 500px;
+     width: 90%;
+     position: relative;
+     background: #A239 !important;
+     /*overflow: auto;*/
+     z-index: 1;
+ }
+ .info {
+     width: 100%;
+     /*height: 300px;*/
+     position: relative;
+     background: green !important;
+     padding-left: 15px;
+     padding-right: 15px;
+ }
+
+/*flex*/
+
+.form-group{
+    background: #d0d0e1;
+}
+
+
+.wrapper {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column; 
+}
+.wrapper > div {
+  /*font-size: 2vh;*/
+  /*color: white;*/
+  background: gray;
+  /*background: #F1F1F1;*/
+  margin: .1em;
+  padding: .1em;
+  border-radius: 3px;
+  /*flex: 1;*/
+}
+
+.initial {
+  -webkit-flex: initial;
+          flex: initial;
+  width: 25%;
+  text-align: left;
+}
+.none {
+  -webkit-flex: none;
+          flex: none;
+}
+.flex1 {
+  -webkit-flex: 1;
+          flex: 1;
+          align-items: stretch;
+          flex-flow: column-reverse wrap;
+
+}
+.flex2 {
+  -webkit-flex: 2;
+          flex: 2;
+
+  background: #8C8C8C;
+  /*background: #F1F1F1;*/
+  margin: .1em;
+  padding: .1em;
+  border-radius: 3px;
+}
+
+.panel-body{
+  padding-bottom: 6% !important;
+}
+
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+/*.container * {
+  box-sizing: border-box;
+}*/
+
+
+/*section
+ means that the content inside is grouped (i.e. relates to a single theme), 
+ and should appear as an entry in an outline of the page.
+ */
+
+
+
+header{
+  max-width: 1140px; 
+  background: orange !important;
+}
+
+main {
+  display: flex;
+  max-width: 1060px;
+  height: 80%;
+  background: violet !important;
+  justify-content: space-between;
+}
+
+
+section {
+  flex: 1 1 10em;
+  background: red !important;
+}
+
+aside {
+  flex: 2 2 20em;
+  background: blue !important;
+  /*padding: 10px;*/
+}
+
+nav {
+  flex-grow: 1;
+}
+
+.mainbox{
+  display: flex;
+  /*flex-flow: column-reverse wrap;*/
+  max-width: 90%;
+}
+
+.box1{
+  flex-grow: 1;
+}
+
+.box2{
+  flex-grow: 2;
+}
+
+.box3{
+  flex-grow: 2;
+}
+
+.box4{
+  flex-grow: 1;
+}
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
 

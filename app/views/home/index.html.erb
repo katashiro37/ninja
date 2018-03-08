@@ -10,16 +10,16 @@
   </thead>
   <tbody id="myTable">
     <%#= render partial: 'contacts', collection: @customer %>
-      <% @contacts.each do |c| %>
+      <%# @contacts.each do |c| %>
         <tr>
-          <td><%= c.name %></td>
-          <td><%= c.company %></td>
-          <td><%= c.email %></td>
-          <td><%= c.phone %></td>
-          <td><%= c.address %></td>
-          <td><%= image_tag c.avatar.url(:thumb), class: "media-object", style: "width:100px; height: 100px;" %></td>
+          <td><%#= c.name %></td>
+          <td><%#= c.company %></td>
+          <td><%#= c.email %></td>
+          <td><%#= c.phone %></td>
+          <td><%#= c.address %></td>
+          <td><%#= image_tag c.avatar.url(:thumb), class: "media-object", style: "width:100px; height: 100px;" %></td>
         </tr>
-      <% end %>
+      <%# end %>
     </tbody>
   </table> -->
 

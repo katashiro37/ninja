@@ -1,134 +1,209 @@
 
-</div class="col-md-10 col-md-offset-1">
-    <div class="jumbotron text-center">
-      <h2>Hello <%= current_user.name %></h2>
-      <p class="lead">Welcome to Contact Manager App</p>
-      <p>
-        <%= link_to "Manager Your Contacts", contacts_path, class: "btn btn-primary btn-lg" %>
-      </p>
-    </div>
-</div>
-
-
-<div class="container-fluid">
-<div class="panel panel-default">
-  <div class="panel panel-body">
-   <div class="col-sm-6">
-      <div class="row">
-        <div class="well">
-        <!-- <div class="col-sm-6" style="background-color:#222;"> -->
-         <center>
-          <h2><i class='fa fa-address-book-o'></i> My Friends </h2>
-          <div>
-            <div id="main-slider" class="owl-carousel owl-theme">
-              <% @contacts.each do |contact| %>
-                <div>
-                  <br>
-                  <%= image_tag contact.avatar.url(:medium) %>
-                  <h4 align="center"><%= link_to contact.name, contact, remote: true%></h4>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </center>
-        <!-- </div> -->
-        </div>
-      </div>
-
-       <div class="row" style="background-color:#dd5638;">
-        <!-- <div class="col-sm-6" style="background-color:#dd5638;"> -->
-        <center>
-         <h2> <i class='fa fa-clock-o'></i> Timepiece</h2> </center>
-         
-          <div class="col-sm-3">
-            <h4> Manila <%= timepiece('Singapore') %></h4>
-            <h4> London <%= timepiece('London') %></h4>
-            <h4> Paris <%= timepiece('Paris') %></h4>
-          </div>
-          <div class="col-sm-3">
-            <h4> Auckland <%= timepiece('Auckland') %></h4>
-            <h4> Lisbon <%= timepiece('Lisbon') %></h4>
-            <h4> Moscow <%= timepiece('Moscow') %></h4>
-          </div>
-          <div class="col-sm-3">
-            <h4> Tokyo <%= timepiece('Tokyo') %></h4>
-            <h4> Hongkong <%= timepiece('Hongkong') %></h4>
-            <h4> Xmas Countdown <%= countdown(Time.new(2018, 12, 25)) %></h4>
-          </div>
-          <div class="col-sm-3">
-            <h4> Helsinki <%= timepiece('Helsinki') %></h4>
-            <h4> Madrid <%= timepiece('Madrid') %></h4>
-            <h4> Sydney <%= timepiece('Sydney') %></h4>
-
-          </div>
-        </center>
-       </div>
-     </div><!--column 1-->
-
-
-     <div class="col-sm-6">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="well">
-              <center><h1><i class="fa fa-user-circle"></i> ABOUT ME</h1></center>
-                <div class="card">
-                      <br>
-                      <%= image_tag @contacts.first.avatar.url(:medium) %>
-                      <h2><%= @contacts.first.name %></h2>
-                      <p class="title"><i class="fa fa-superpowers"></i>CEO & Founder</p>
-                      <p><%= @contacts.first.company %></p>
-                      <p><i class="fa fa-envelope"></i><%= @contacts.first.email %></p>
-                      <p><i class="fa fa-phone"></i><%= @contacts.first.phone %></p>
-                      <p><i class="fa fa-info-circle"></i><%= @contacts.first.address %></p>
-                      <div style="margin: 20px 0;">
-                        <a href="#"><i class="fa fa-dribbble fa-2x"></i></a>
-                        <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-                        <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
-                        <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
-                     </div>
-                </div>
-            </div>
-        </div>
-      </div>
-     </div><!--column 2-->
-
-    </div><!--panel body -->
-  </div><!--panel -->
-</div>
-
-  <%= render 'layouts/form_id' %>
-
-  <div class="col-lg-12">
-      <div class="row">
-      <!-- <div class="col-md-5 col-md-offset-4 sortable"> -->
-        <% if @tasks.any? %>
-
-           <div class="col-lg-6">
-             <div class="panel panel-default">
-               <div class="panel-heading"><center><h2><i class="fa fa-tasks"></i> My Tasks</h2></center></div>
-                <div class="panel panel-body">
-    
-                  <%= render 'layouts/task' %>
-
-                </div>
-             </div>
-           </div>
-        <% else %>
-        <div class="col-lg-6">
-          <div class="panel panel-default">
-           <div class="panel-heading"><center><h2><i class="fa fa-tasks"></i> My Tasks</h2></center></div>
-            <div class="panel panel-body">
-                <div class="well">
-                  <%= Time.zone.today.strftime("%B %d, %Y")  %>
-                  <h2>No scheduled activities</h2>
-                </div>
-                  <div class="col-sm-6 col-sm-offset-3">
-                    <%= link_to "Create New Task", new_task_path, class: "btn btn-primary btn-block" %>
-                  </div>
-              </div>
-           </div>
-         </div>
-        <% end %>
-      <!-- </div> -->
+<!-- SAMPLE TEMPLATE -->
+<!-- 
+<header>
+    header content here
+</header>
+<main class="main">
+  <nav>
+    nav content here
+  </nav>
+  <div class="content">
+    main content here
   </div>
+  <aside>
+    aside content here
+  </aside>
+</main>
+<footer>
+  footer content here
+</footer> -->
+
+<!-- <div class="sidebar"></div>
+<div class="content">
+    <div class="info"></div>
+</div> -->
+
+<!-- SAMPLE TEMPLATE -->
+
+
+
+<!-- Side navigation -->
+<div class="sidebar">
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
 </div>
+
+<div class="content">
+<header>
+  <div class="jumbotron text-center">
+    <h2>Hello <%= current_user.name %></h2>
+    <p class="lead">Welcome to Contact Manager App</p>
+    <p>
+      <%= link_to "Manager Your Contacts", contacts_path, class: "btn btn-primary btn-lg" %>
+    </p>
+  </div>    
+</header>
+
+
+<div class="info">
+  <!-- <main>
+    <section class="col"></section>
+    <aside class="col">asd</aside>
+  </main> -->
+
+<!-- ROW 1 -->
+<!-- <div class="col-lg-12"> -->
+  <div class="row"> 
+        
+        <div class="col-lg-6" style="background: #A5C193;">
+         <!-- CARD -->
+        <div class="panel panel-default">
+          <div class="panel-heading" style="text-align: center;"><h2><i class="fa fa-user-circle"></i> ABOUT ME</h2></div>
+          <div class="panel-body">
+          
+            <div class="card">
+                  <br>
+                  <%= image_tag @contacts.first.avatar.url(:medium) %>
+                  <h2><%= @contacts.first.name %></h2>
+                  <p class="title"><i class="fa fa-superpowers"></i>CEO & Founder</p>
+                  <p><%= @contacts.first.company %></p>
+                  <p><i class="fa fa-envelope"></i><%= @contacts.first.email %></p>
+                  <p><i class="fa fa-phone"></i><%= @contacts.first.phone %></p>
+                  <p><i class="fa fa-info-circle"></i><%= @contacts.first.address %></p>
+                  <br>
+                  <br>
+            </div>
+        </div>
+        </div>
+          <%= render 'layouts/form_id' %>
+        <!-- CARD -->   
+        
+        </div>      
+        
+        
+
+         <div class="col-lg-6" style="background: #A5C193;">
+
+          <!-- FRIENDS -->
+            <div class="panel panel-default">
+              <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-address-book-o'></i> My Friends </h2></div>
+              <div class="panel-body">
+               <center>
+                <div>
+                  <div id="main-slider" class="owl-carousel owl-theme">
+                    <% @contacts.each do |contact| %>
+                      <div>
+                        <br>
+                        <%= image_tag contact.avatar.url(:medium) %>
+                        <h4 align="center"><%= link_to contact.name, contact, remote: true%></h4>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </center>
+              </div>
+            </div>
+          <!-- FRIENDS -->
+
+              <div class="panel panel-default"> 
+                <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-clock-o'></i> Timepiece</h2></div>
+                <div class="panel-body">
+                  <div class="col-sm-4">
+                    <h5> Manila <%= timepiece('Singapore') %></h5>
+                    <h5> London <%= timepiece('London') %></h5>
+                    <h5> Hongkong <%= timepiece('Hongkong') %></h5>
+                  </div>
+                
+                  <div class="col-sm-4">
+                    <h5> Lisbon <%= timepiece('Lisbon') %></h5>
+                    <h5> Moscow <%= timepiece('Moscow') %></h5>
+                    <h5> Sydney <%= timepiece('Sydney') %></h5>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <h5> Auckland <%= timepiece('Auckland') %></h5>
+                    <h5> Helsinki <%= timepiece('Helsinki') %></h5>
+                    <h5> Madrid <%= timepiece('Madrid') %></h5>
+                  </div>
+                </div>        
+              </div>          
+        </div>
+
+  </div>
+<!-- ROW 1 -->
+
+<!-- ROW 2 -->
+  <div class="row">
+     <main class="col">
+      <section class="col">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-clock-o'></i> Timepiece</h2></div>
+          <div class="panel-body">
+
+            
+              <div class="col-sm-4">
+                <h5> Manila <%= timepiece('Singapore') %></h5>
+                <h5> London <%= timepiece('London') %></h5>
+                <h5> Hongkong <%= timepiece('Hongkong') %></h5>
+              </div>
+            
+              <div class="col-sm-4">
+                <h5> Lisbon <%= timepiece('Lisbon') %></h5>
+                <h5> Moscow <%= timepiece('Moscow') %></h5>
+                <h5> Sydney <%= timepiece('Sydney') %></h5>
+              </div>
+
+              <div class="col-sm-4">
+                <h5> Auckland <%= timepiece('Auckland') %></h5>
+                <h5> Helsinki <%= timepiece('Helsinki') %></h5>
+                <h5> Madrid <%= timepiece('Madrid') %></h5>
+              </div>
+            
+               
+          </div>        
+        </div> 
+               
+      </section>
+
+
+      <aside class="col">
+        <!-- TASK -->
+          <% if @tasks.any? %>
+               <div class="panel panel-default">
+                 <div class="panel-heading"><center><h2><i class="fa fa-tasks"></i> My Tasks</h2></center></div>
+                  <div class="panel-body">
+
+                    <%= render 'layouts/task' %>
+
+                  </div>
+                </div>
+              
+          <% else %>
+              <div class="panel panel-default">
+               <div class="panel-heading" style="text-align: center;""><h2><i class="fa fa-tasks"></i> My Tasks</h2></div>
+                <div class="panel-body">
+                    <div class="well">
+                      <%= Time.zone.today.strftime("%B %d, %Y")  %>
+                      <h2>No scheduled activities</h2>
+                    </div>
+                      <div class="col-sm-6 col-sm-offset-3">
+                        <%= link_to "Create New Task", new_task_path, class: "btn btn-primary btn-block" %>
+                      </div>
+                </div>
+              </div>
+          <% end %>
+          <!-- TASK -->
+      </aside>
+   </main>
+  </div>
+<!-- ROW 2 -->
+
+
+
+<!-- </div>   -->
+</div>  
+</div>
+
