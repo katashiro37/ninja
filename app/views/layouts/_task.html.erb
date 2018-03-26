@@ -1,0 +1,15 @@
+
+
+<ul class="list-group" id="tasks" data-update-url="<%= sort_tasks_url %>">
+<% @tasks.each do |task| %>
+	<%= content_tag_for(:li, task, :class => "list-group-item") do %>
+		<center>
+	    	<h5 style="cursor: pointer;"><%= task.name %> on: <%= task.start %></h5>
+	    </center>
+	<% end %>
+<% end %>
+<li class="list-group-item" style="text-align: center;"><%= link_to "Add New Task", tasks_path, class: "btn btn-primary btn-lg" %></li>
+</ul>
+
+
+ 	 

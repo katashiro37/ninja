@@ -1,0 +1,50 @@
+
+<%= form_for(@task, html: { multipart: true }, id:"task_form", remote: local_assigns[:task_form]) do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :task_name, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start %>
+    <%= form.date_select :start, id: :task_start, class:"form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :deadline %>
+    <%= form.date_select :deadline, id: :task_deadline, class:"form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :status %>
+    <%= form.check_box :status, id: :task_status %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, value:current_user.id, id: :task_user_id, class:"form-control"  %>
+  </div>
+
+ <!--  <div class="actions">
+    <%#= form.submit %>
+  </div> -->
+
+  <div class="modal-footer">
+      
+        <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+        <%= form.submit @task.new_record? ? "Save Task" : "Save Changes", class: "btn btn-primary btn-block" %>
+      
+  </div>
+<% end %>

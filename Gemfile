@@ -77,3 +77,7 @@ gem 'spinjs-rails', '~> 1.4'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.3'
 
 gem 'timepiece'
+
+gem 'bootstrap-datepicker-rails'
+
+gem 'record_tag_helper', '~> 1.0'

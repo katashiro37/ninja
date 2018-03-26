@@ -12,22 +12,26 @@
 //
 
 //= require jquery
-//= require bootstrap-sprockets
-//= require bootstrap/dropdown
-//= require bootstrap/modal
-//= require bootstrap/transition
-//= require jasny-bootstrap.min
-//= require rails-ujs
-//= require turbolinks
 //= require jquery-ui
 //= require jquery-ui/core
 //= require jquery-ui/widget
 //= require jquery-ui/position
+//= require bootstrap-sprockets
+//= require bootstrap/dropdown
+//= require bootstrap/modal
+//= require bootstrap/transition
+//= require bootstrap-datepicker
+//= require jasny-bootstrap.min
+//= require rails-ujs
+//= require turbolinks
 //= require toastr
 //= require spin
 //= require jquery.spin
 //= require owl.carousel
 //= require timepiece
+//= require formvalidation
+//= require formvalidation.bootstrap
+
 //= require_tree .
 
 
@@ -62,33 +66,6 @@ $( document ).on('turbolinks:load', function() {
     $('#ajax-spin').hide();
     $('#abc').hide();
 
-     // Shows the default spinner
-
-    // $(".spinner").hide();
-    //
-    // $(document).ajaxStart(function() {
-    //   $(".spinner").fadeIn('slow');
-    // }).ajaxStop(function() {
-    //     $(".spinner").hide();
-    // })
-
-
-    // $('.owl-carousel').owlCarousel({
-    //     loop:true,
-    //     margin:10,
-    //     nav:true,
-    //     responsive:{
-    //         0:{
-    //             items:1
-    //         },
-    //         600:{
-    //             items:3
-    //         },
-    //         1000:{
-    //             items:5
-    //         }
-    //     }
-    // });
 
     var owl = $('.owl-carousel');
     owl.owlCarousel({
@@ -126,7 +103,89 @@ $( document ).on('turbolinks:load', function() {
         owl.trigger('stop.owl.autoplay')
     });
 
-});
+    $('#task_form').formValidation({
+      framework: 'bootstrap',
+      icon: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+         'task[name]': {
+          message: 'name is required',
+          validators: {
+            notEmpty: {
+              message: 'name is required'
+            },
+            stringLength: {
+                min: 2,
+                max: 16,
+                message: 'The name must be more than 2 and less than 16 characters long'
+            },
+            regexp: {
+                regexp: /^[a-zA-Z]+$/,
+                message: 'The name can only consist of alphabetical characters'
+            }
+          }
+        }              
+        
+      }
+    }).on('success.form.fv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+            $.ajax({
+                url: String($(this).attr('action')),
+                type: 'post',
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function(data) {
+                  $('.displaynone').css("display","inline-block");
+                    },
+                    success: function(data) {
+
+                    },
+                    complete: function(data){
+                       $('.displaynone').fadeOut().css("display","none");
+                     },
+                    error: function(data) {
+                       // code here
+                    }
+            });
+       
+     });
+
+
+
+    var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();      
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {          
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {   
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+  
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });  
+
+}); // end turbolinks
 
 // default
 
