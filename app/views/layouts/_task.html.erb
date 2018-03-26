@@ -4,11 +4,11 @@
 <% @tasks.each do |task| %>
 	<%= content_tag_for(:li, task, :class => "list-group-item") do %>
 		<center>
-	    	<h5><%= link_to h(task.name), task %> on: <%= task.start %></h5>
+	    	<h5 style="cursor: pointer;"><%= task.name %> on: <%= task.start %></h5>
 	    </center>
 	<% end %>
 <% end %>
-<li class="list-group-item" style="text-align: center;"><%= link_to "Add New Task", new_task_path, class: "btn btn-primary btn-lg" %></li>
+<li class="list-group-item" style="text-align: center;"><%= link_to "Add New Task", tasks_path, class: "btn btn-primary btn-lg" %></li>
 </ul>
 
 

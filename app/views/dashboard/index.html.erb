@@ -1,43 +1,4 @@
 
-<!-- SAMPLE TEMPLATE -->
-<!-- 
-<header>
-    header content here
-</header>
-<main class="main">
-  <nav>
-    nav content here
-  </nav>
-  <div class="content">
-    main content here
-  </div>
-  <aside>
-    aside content here
-  </aside>
-</main>
-<footer>
-  footer content here
-</footer> -->
-
-<!-- <div class="sidebar"></div>
-<div class="content">
-    <div class="info"></div>
-</div> -->
-
-<!-- SAMPLE TEMPLATE -->
-
-
-
-<!-- Side navigation -->
-<div class="sidebar" style="text-align: left;">
-  
-  <a href="#"><i class="fa fa-info-circle"></i> About</a>
-  <a href="#"><i class="fa fa-bars"></i> Services</a>
-  <a href="#"><i class="fa fa-users"></i> Clients</a>
-  <a href="#"><i class="fa fa-phone-square"></i> Contact</a>
-  
-</div>
-
 <div class="content">
 <header>
   <div class="jumbotron text-center">
@@ -60,7 +21,7 @@
 <!-- <div class="col-lg-12"> -->
   <div class="row"> 
         
-        <div class="col-lg-6" style="background: #A5C193;">
+        
          <!-- CARD -->
         <div class="panel panel-default">
           <div class="panel-heading" style="text-align: center;"><h2><i class="fa fa-user-circle"></i> ABOUT ME</h2></div>
@@ -82,12 +43,7 @@
         </div>
           <%= render 'layouts/form_id' %>
         <!-- CARD -->   
-        
-        </div>      
-        
-        
-
-         <div class="col-lg-6" style="background: #A5C193;">
+         
 
           <!-- FRIENDS -->
             <div class="panel panel-default">
@@ -132,7 +88,7 @@
                   </div>
                 </div>        
               </div>          
-        </div>
+        
 
   </div>
 <!-- ROW 1 -->
@@ -192,7 +148,7 @@
                       <h2>No scheduled activities</h2>
                     </div>
                       <div class="col-sm-6 col-sm-offset-3">
-                        <%= link_to "Create New Task", new_task_path, class: "btn btn-primary btn-block" %>
+                        <%= link_to "Create New Task", tasks_path, class: "btn btn-primary btn-block" %>
                       </div>
                 </div>
               </div>
@@ -202,7 +158,34 @@
    </main>
   </div>
 <!-- ROW 2 -->
-
+<div class="row">
+<div class="container-flex">
+  <div class="box box-1">1
+    <div class="panel panel-default">
+      <div class="panel-heading">Title</div>
+      <div class="panel-body">asdasasd</div>
+    </div>
+  </div>
+  <div class="box box-2">2
+    <div class="panel panel-default">
+      <div class="panel-heading">Title</div>
+      <div class="panel-body">asdasasd</div>
+    </div>
+  </div>
+  <div class="box box-3">3
+    <div class="panel panel-default">
+      <div class="panel-heading">Title</div>
+      <div class="panel-body">asdasasd</div>
+    </div>
+  </div>
+<!--   <div class="box box-4">4</div>  -->
+<!--   <div class="box box-5">5</div>
+  <div class="box box-6">6</div>
+  <div class="box box-7">7</div>
+  <div class="box box-8">8</div>
+  <div class="box box-9">9</div>   -->
+</div>
+</div>
 
 
 <!-- </div>   -->

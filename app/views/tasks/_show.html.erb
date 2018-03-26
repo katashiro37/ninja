@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= form_for(@task, html: { multipart: true }, remote: local_assigns[:show_task]) do |f| %>
+<center>
+    <p>
+      <h1>
+      <%= @task.name %>
+      </h1>  
+    </p>
+
+    <p>
+      <% if @task.status == true %>
+        <strong>Status:</strong> Active
+      <% else %>
+        <strong>Status:</strong> InActive
+      <% end %>
+    </p>
+
+
+    <p>
+      <strong>Start:</strong>
+      <%= @task.start %>
+    </p>
+
+    <p>
+      <strong>Due Date:</strong>
+      <%= @task.deadline %>
+    </p>
+
+    <!-- <p>
+      <strong>User:</strong>
+      <%#= @task.user_id %>
+    </p> -->
+</center>
+
+ 
+<% end %>
+<div class="modal-footer">
+    
+      <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Close</button>
+    
+</div>
+
+
+
+
+<%#= link_to 'Edit', edit_task_path(@task) %>
+<%#= link_to 'Back', tasks_path %>
