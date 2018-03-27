@@ -1,4 +1,3 @@
-
 <div class="content">
 <header>
   <div class="jumbotron text-center">
@@ -12,179 +11,124 @@
 
 
 <div class="info">
-  <!-- <main>
-    <section class="col"></section>
-    <aside class="col">asd</aside>
-  </main> -->
 
-<!-- ROW 1 -->
-<!-- <div class="col-lg-12"> -->
-  <div class="row"> 
-        
-        
-         <!-- CARD -->
-        <div class="panel panel-default">
-          <div class="panel-heading" style="text-align: center;"><h2><i class="fa fa-user-circle"></i> ABOUT ME</h2></div>
-          <div class="panel-body">
-          
-            <div class="card">
-                  <br>
-                  <%= image_tag @contacts.first.avatar.url(:medium) %>
-                  <h2><%= @contacts.first.name %></h2>
-                  <p class="title"><i class="fa fa-superpowers"></i>CEO & Founder</p>
-                  <p><%= @contacts.first.company %></p>
-                  <p><i class="fa fa-envelope"></i><%= @contacts.first.email %></p>
-                  <p><i class="fa fa-phone"></i><%= @contacts.first.phone %></p>
-                  <p><i class="fa fa-info-circle"></i><%= @contacts.first.address %></p>
-                  <br>
-                  <br>
-            </div>
-        </div>
-        </div>
-          <%= render 'layouts/form_id' %>
-        <!-- CARD -->   
-         
-
-          <!-- FRIENDS -->
-            <div class="panel panel-default">
-              <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-address-book-o'></i> My Friends </h2></div>
-              <div class="panel-body">
-               <center>
-                <div>
-                  <div id="main-slider" class="owl-carousel owl-theme">
-                    <% @contacts.each do |contact| %>
-                      <div>
-                        <br>
-                        <%= image_tag contact.avatar.url(:medium) %>
-                        <h4 align="center"><%= link_to contact.name, contact, remote: true%></h4>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-              </center>
-              </div>
-            </div>
-          <!-- FRIENDS -->
-
-              <div class="panel panel-default"> 
-                <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-clock-o'></i> Timepiece</h2></div>
-                <div class="panel-body">
-                  <div class="col-sm-4">
-                    <h5> Manila <%= timepiece('Singapore') %></h5>
-                    <h5> London <%= timepiece('London') %></h5>
-                    <h5> Hongkong <%= timepiece('Hongkong') %></h5>
-                  </div>
-                
-                  <div class="col-sm-4">
-                    <h5> Lisbon <%= timepiece('Lisbon') %></h5>
-                    <h5> Moscow <%= timepiece('Moscow') %></h5>
-                    <h5> Sydney <%= timepiece('Sydney') %></h5>
-                  </div>
-
-                  <div class="col-sm-4">
-                    <h5> Auckland <%= timepiece('Auckland') %></h5>
-                    <h5> Helsinki <%= timepiece('Helsinki') %></h5>
-                    <h5> Madrid <%= timepiece('Madrid') %></h5>
-                  </div>
-                </div>        
-              </div>          
-        
-
-  </div>
-<!-- ROW 1 -->
-
-<!-- ROW 2 -->
-  <div class="row">
-     <main class="col">
-      <section class="col">
-        <div class="panel panel-default">
-          <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-clock-o'></i> Timepiece</h2></div>
-          <div class="panel-body">
-
-            
-              <div class="col-sm-4">
-                <h5> Manila <%= timepiece('Singapore') %></h5>
-                <h5> London <%= timepiece('London') %></h5>
-                <h5> Hongkong <%= timepiece('Hongkong') %></h5>
-              </div>
-            
-              <div class="col-sm-4">
-                <h5> Lisbon <%= timepiece('Lisbon') %></h5>
-                <h5> Moscow <%= timepiece('Moscow') %></h5>
-                <h5> Sydney <%= timepiece('Sydney') %></h5>
-              </div>
-
-              <div class="col-sm-4">
-                <h5> Auckland <%= timepiece('Auckland') %></h5>
-                <h5> Helsinki <%= timepiece('Helsinki') %></h5>
-                <h5> Madrid <%= timepiece('Madrid') %></h5>
-              </div>
-            
-               
-          </div>        
-        </div> 
-               
-      </section>
-
-
-      <aside class="col">
-        <!-- TASK -->
-          <% if @tasks.any? %>
-               <div class="panel panel-default">
-                 <div class="panel-heading"><center><h2><i class="fa fa-tasks"></i> My Tasks</h2></center></div>
-                  <div class="panel-body">
-
-                    <%= render 'layouts/task' %>
-
-                  </div>
-                </div>
-              
-          <% else %>
-              <div class="panel panel-default">
-               <div class="panel-heading" style="text-align: center;""><h2><i class="fa fa-tasks"></i> My Tasks</h2></div>
-                <div class="panel-body">
-                    <div class="well">
-                      <%= Time.zone.today.strftime("%B %d, %Y")  %>
-                      <h2>No scheduled activities</h2>
-                    </div>
-                      <div class="col-sm-6 col-sm-offset-3">
-                        <%= link_to "Create New Task", tasks_path, class: "btn btn-primary btn-block" %>
-                      </div>
-                </div>
-              </div>
-          <% end %>
-          <!-- TASK -->
-      </aside>
-   </main>
-  </div>
-<!-- ROW 2 -->
 <div class="row">
-<div class="container-flex">
-  <div class="box box-1">1
+  <div class="container-flex">
+    <div class="square box-a">
+     <!-- CARD -->
     <div class="panel panel-default">
-      <div class="panel-heading">Title</div>
-      <div class="panel-body">asdasasd</div>
+      <div class="panel-heading" style="text-align: center;"><h2><i class="fa fa-user-circle"></i> ABOUT ME</h2></div>
+      <div class="panel-body">
+      
+        <div class="card">
+              <br>
+              <%= image_tag @contacts.first.avatar.url(:medium) %>
+              <h2><%= @contacts.first.name %></h2>
+              <p class="title"><i class="fa fa-superpowers"></i>CEO & Founder</p>
+              <p><%= @contacts.first.company %></p>
+              <p><i class="fa fa-envelope"></i><%= @contacts.first.email %></p>
+              <p><i class="fa fa-phone"></i><%= @contacts.first.phone %></p>
+              <p><i class="fa fa-info-circle"></i><%= @contacts.first.address %></p>
+              <br>
+              <br>
+        </div>
+    </div>
+    </div>
+      <%= render 'layouts/form_id' %>
+    <!-- CARD -->   
     </div>
   </div>
-  <div class="box box-2">2
+  <div class="container-cflex">
+
+    <div class="square box-b">
+    <!-- FRIENDS -->
+      <div class="panel panel-default">
+        <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-address-book-o'></i> My Friends </h2></div>
+        <div class="panel-body">
+         <center>
+          <div>
+            <div id="main-slider" class="owl-carousel owl-theme">
+              <% @contacts.each do |contact| %>
+                <div>
+                  <br>
+                  <%= image_tag contact.avatar.url(:medium) %>
+                  <h4 align="center"><%= link_to contact.name, contact, remote: true%></h4>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </center>
+        </div>
+      </div>
+    <!-- FRIENDS -->
+    </div>
+      
+    
+    <div class="square box-c">      
+    <!-- TIMEPIECE -->
     <div class="panel panel-default">
-      <div class="panel-heading">Title</div>
-      <div class="panel-body">asdasasd</div>
+      <div class="panel-heading" style="text-align: center;"><h2><i class='fa fa-clock-o'></i> Timepiece</h2></div>
+      <div class="panel-body">
+
+        
+          <div class="col-sm-4">
+            <h5> Manila <%= timepiece('Singapore') %></h5>
+            <h5> London <%= timepiece('London') %></h5>
+            <h5> Hongkong <%= timepiece('Hongkong') %></h5>
+          </div>
+        
+          <div class="col-sm-4">
+            <h5> Lisbon <%= timepiece('Lisbon') %></h5>
+            <h5> Moscow <%= timepiece('Moscow') %></h5>
+            <h5> Sydney <%= timepiece('Sydney') %></h5>
+          </div>
+
+          <div class="col-sm-4">
+            <h5> Auckland <%= timepiece('Auckland') %></h5>
+            <h5> Helsinki <%= timepiece('Helsinki') %></h5>
+            <h5> Madrid <%= timepiece('Madrid') %></h5>
+          </div>
+        
+           
+      </div>        
+    </div> 
+    <!-- TIMEPIECE -->
     </div>
   </div>
-  <div class="box box-3">3
-    <div class="panel panel-default">
-      <div class="panel-heading">Title</div>
-      <div class="panel-body">asdasasd</div>
+               
+  <div class="container-flex">
+    <div class="square box-d">
+    <!-- TASK -->
+      <% if @tasks.any? %>
+           <div class="panel panel-default">
+             <div class="panel-heading"><center><h2><i class="fa fa-tasks"></i> My Tasks</h2></center></div>
+              <div class="panel-body">
+
+                <%= render 'layouts/task' %>
+
+              </div>
+            </div>
+          
+      <% else %>
+          <div class="panel panel-default">
+           <div class="panel-heading" style="text-align: center;""><h2><i class="fa fa-tasks"></i> My Tasks</h2></div>
+            <div class="panel-body">
+                <div class="well">
+                  <%= Time.zone.today.strftime("%B %d, %Y")  %>
+                  <h2>No scheduled activities</h2>
+                </div>
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <%= link_to "Create New Task", tasks_path, class: "btn btn-primary btn-block" %>
+                  </div>
+            </div>
+          </div>
+      <% end %>
+    <!-- TASK -->
     </div>
   </div>
-<!--   <div class="box box-4">4</div>  -->
-<!--   <div class="box box-5">5</div>
-  <div class="box box-6">6</div>
-  <div class="box box-7">7</div>
-  <div class="box box-8">8</div>
-  <div class="box box-9">9</div>   -->
-</div>
+        
+      
+
 </div>
 
 

@@ -34,43 +34,99 @@
 /* APPEARANCE STYLES*/
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
 
+.bg-grey{
+  border: 1px solid black;
+  background: #f1f1f1;
+  padding-bottom: 5px;
+  padding-top: 4px;
+}
 
 .box {
-  font-size: 30px;
+  font-size: 14px;
   color: black;
   padding: 10px;
   text-align:center;
   font-family: lato;
-  font-weight: 300;
+  font-weight: 20;
   box-sizing: border-box;
-  flex-basis: 250px;
+  flex-basis: 100px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.square {
+  font-size: 14px;
+  color: black;
+  padding: 10px;
+  text-align:center;
+  font-family: lato;
+  font-weight: 20;
+  box-sizing: border-box;
+  flex-basis: 300px;
   flex-grow: 1;
   flex-shrink: 0;
 }
 
-.box-1 {background: #e51400; flex-shrink:0 }
-.box-2 {background: #fa6800; flex-grow:3}
+.box-1 {background: #e51400; flex-grow: 1}
+.box-2 {background: #fa6800; }
 .box-3 {background: #f0a30a; }
 .box-4 {background: #e3c800; }
-.box-5 {background: #a4c400;}
-.box-6 {background: #60a917;}
+.box-5 {background: #a4c400; flex-grow: 1}
+.box-6 {background: #60a917; flex-grow: 1}
 .box-7 {background: #00aba9; order:8}
 .box-8 {background: #1ba1e2;} 
 .box-9 {background: #aa00ff; order:1}
 
-/*  LAYOUT STYLES */
+.box-a {background: #e51400; }
+.box-b {background: #fa6800; flex-grow: 0;}
+.box-c {background: #f0a30a; flex-grow: 2;}
+.box-d {background: #e3c800; }
+.box-e {background: #a4c400; }
+.box-f {background: #60a917; }
+.box-g {background: #00aba9; }
+.box-h {background: #1ba1e2; } 
+.box-i {background: #aa00ff; }
+
+.container-bflex{
+  display: flex;
+  border: 1px solid black;
+ /* width: 74vh;
+  height: 52vh;  */
+  flex-direction: row;
+  border-color: #f1f1f1;
+  background-color: #f1f1f1;
+}
+
+
+.container-iflex{
+  display: flex;
+  border: 1px solid black;
+  /*height: 52vh; */
+  flex-direction: row;
+  border-color: #f1f1f1;
+  background-color: #f1f1f1;
+}
 
 .container-flex {
   display: flex;
   border: 10px solid black;
-  height: 100vh;
-  flex-direction: row;
-/*   flex-wrap: wrap;
-  align-content: center;
+  flex-flow: column nowrap;
+/*  align-content: center;
   justify-content: center; */
-  
 }
 
+.container-cflex {
+  display: flex;
+  border: 10px solid black;
+  flex-direction: column;
+/*  flex-wrap: wrap;
+  justify-content: flex-start;*/
+/*  align-content: center;
+  justify-content: center; */
+}
+
+
+/*  LAYOUT STYLES */
 
 body {
   position: relative;
@@ -89,6 +145,13 @@ body {
 	-webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
 	box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
 }
+
+/*
+TASK FORM FIELDS
+
+#tf-1, #tf-2, #tf-3, #tf-4, #tf-5{ background: none !important; }
+
+*/
 
 .navbar .navbar-brand {
 	font-weight: bold;
@@ -199,9 +262,9 @@ body {
 
 /*flex*/
 
-.form-group{
+/*.form-group{
     background: #d0d0e1;
-}
+}*/
 
 .panel-body{
   padding-bottom: 6% !important;

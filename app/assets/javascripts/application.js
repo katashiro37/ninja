@@ -103,7 +103,7 @@ $( document ).on('turbolinks:load', function() {
         owl.trigger('stop.owl.autoplay')
     });
 
-    $('#task_form').formValidation({
+    $('#task_index').formValidation({
       framework: 'bootstrap',
       icon: {
           valid: 'glyphicon glyphicon-ok',

@@ -29,15 +29,16 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
+      # respond_to do |format|
+      #   if valid_task? && @task.save
+      #     format.html { redirect_to @task, notice: 'Task was successfully created.' }
+      #     format.json { render :tasks, status: :created, location: @task }
+      #   else
+      #     format.html { render :new }
+      #     format.json { render json: @task.errors, status: :unprocessable_entity }
+      #   end
+      # end
+
       # respond_to do |format|
       #     if @task.save
       #         format.html do
@@ -53,20 +54,34 @@ class TasksController < ApplicationController
       #         format.js { render 'new', status: :unprocessable_entity }
       #     end
       # end
+
+
+    if valid_task? && @task.save
+      flash[:success] = "Task was successfully created."           
+      redirect_to tasks_path
+    end
+
+
+    
+    # render :layout => false 
   end
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if valid_task? && @task.update(task_params)
+      flash[:success] = "Task was successfully updated."           
+      redirect_to tasks_path
     end
+    # respond_to do |format|
+    #   if @task.update(task_params)
+    #     format.html { redirect_to tasks_path, notice: 'Task was successfully updated.' }
+    #     # format.json { render :show, status: :ok, location: @task }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @task.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /tasks/1
@@ -95,5 +110,24 @@ class TasksController < ApplicationController
     params.require(:task).permit(:name, :start, :deadline, :status, :user_id, :position)
   end
 
+
+
+  def valid_task?
+    
+    result = true
+
+
+    # result = false if params[:task][:feedback_type_id].blank?
+    # @yp_feedback.errors.add(:error, "Please select a feedback" ) if  params[:task][:feedback_type_id].blank?
+
+    result = false if params[:task][:name].blank?
+    @task.errors.add(:error, "title can't be blank" ) if  params[:task][:name].blank?
+
+    # result = false if params["g-recaptcha-response"].blank?
+    # @task.errors.add(:error, "Please check reCAPTCHA!" ) if params["g-recaptcha-response"].blank?
+
+    return result
+  end 
+  
   private :set_task, :task_params 
 end

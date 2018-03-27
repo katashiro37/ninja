@@ -1,5 +1,5 @@
 
-<%= form_for(@task, html: { multipart: true }, id:"task_form", remote: local_assigns[:task_form]) do |form| %>
+<%= form_for(@task, html: { multipart: true }, id:"task_index", remote: local_assigns[:task_form]) do |form| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -12,39 +12,62 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :task_name, class:"form-control" %>
+  <div class="container-bflex">
+    <div class="box box-1" id="tf-1">
+      <div class="form-group">
+        <i class="fa fa-info-circle"></i>
+        <%= form.label :name, "Title" %>
+        <%= form.text_field :name, id: :task_name, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="box box-2" id="tf-2">
+      <div class="form-group">
+        <i class="fa fa-user-circle"></i>
+        <%= form.label :user_id %>
+        <%= form.text_field :user_id, value:current_user.id, id: :task_user_id, class:"form-control"  %>
+      </div>
+    </div>
+
+    <div class="box box-3" id="tf-3">
+     <!-- <div class="form-group"> -->
+      <i class="fa fa-question-circle"></i>
+        <%= form.label :status %>
+        <br>
+      <div class="bg-grey">
+        <%= form.check_box :status, id: :task_status %>
+      </div>
+     <!-- </div> -->
+    </div>
   </div>
 
-  <div class="form-group">
+  <br>
+
+  <div class="container-bflex">
+    <div class="box box-5" id="tf-4">
+    <i class="fa fa-play-circle"></i>      
     <%= form.label :start %>
+    <br>
     <%= form.date_select :start, id: :task_start, class:"form-control"  %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :deadline %>
+    </div>
+    
+    <div class="box box-6" id="tf-5">
+    <i class="fa fa-stop-circle"></i>
+    <%= form.label :deadline, "End" %>
+    <br>
     <%= form.date_select :deadline, id: :task_deadline, class:"form-control"  %>
+    </div>  
   </div>
 
-  <div class="form-group">
-    <%= form.label :status %>
-    <%= form.check_box :status, id: :task_status %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, value:current_user.id, id: :task_user_id, class:"form-control"  %>
-  </div>
-
+  <br>
  <!--  <div class="actions">
     <%#= form.submit %>
   </div> -->
 
-  <div class="modal-footer">
+  <!-- <div class="modal-footer"> -->
       
         <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
         <%= form.submit @task.new_record? ? "Save Task" : "Save Changes", class: "btn btn-primary btn-block" %>
       
-  </div>
+  <!-- </div> -->
 <% end %>
