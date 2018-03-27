@@ -1,0 +1,22 @@
+toastr.options.closeButton = true;
+toastr.options.timeOut = 5000;
+toastr.options.newestOnTop = true;
+toastr.options.preventDuplicates = true;
+
+
+<%unless @task.errors.any? %>
+	   toastr.success('Your task has been successfully submitted. <br> Thank you!', 'Message');
+	   $("input[type=select], select").val("");
+	   $("input[type=text], textarea").val("");
+	   // $("#fb_docs").val("");
+	   // $("#feedback .close").click();
+	   // $('#feedback_form').formValidation('resetForm', true);
+	   // grecaptcha.reset();
+<%else%>
+  <%@task.errors.each do |attribute, message|%>
+       toastr.<%=attribute%>('<%= message %>', 'Message');
+  <%end%>
+
+ 
+<%end%>
+
